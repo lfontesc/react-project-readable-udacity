@@ -32,8 +32,9 @@ class NewPost extends Component {
     return (
       <main>
         <div className="voltar-btn-wrapper">
-          <button><Link to="/">Voltar</Link></button>
+          <a><Link to="/">Voltar</Link></a>
         </div>
+        
         <section className="main-content">
           <h3 className="post-form-title">Criar Postagem</h3>
           <form className="post-form" onSubmit={this.handleNewPost}>

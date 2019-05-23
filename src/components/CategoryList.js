@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { capitalize } from '../utils/utils'
 import { callLoadingCategories, selectCategory } from '../actions'
 import { connect } from 'react-redux'
+import style from '../assets/style/style.css'
+
 
 class CategoryList extends Component {
   componentDidMount() {
@@ -23,15 +25,25 @@ class CategoryList extends Component {
     let categories = this.props.categories.categories
 
     return (
-      <section className="categorias-wrapper">
-        <h3>Categories</h3>
-        <ul className="categorias-list">
-          <li><Link to="/">Todas</Link></li>
-          {categories !== undefined && categories.map((category) => (
-            <li key={category.name}><Link to="#" onClick={this.handleSelectCategory} category={category.name}>{capitalize(category.name)}</Link></li>
-          ))}
-        </ul>
-      </section>
+
+
+      <div className='container space'>
+          <nav class="nav nav-pills flex-column flex-sm-row">
+          <a class="flex-sm-fill text-sm-center nav-link separator" href="#"><Link to="/">Todas</Link>
+          <i class="fas fa-angle-right teste32"></i>
+          </a>
+            {categories !== undefined && categories.map((category) => (
+                <a class="flex-sm-fill text-sm-center nav-link separator" href="#">
+              <Link to="#" onClick={this.handleSelectCategory} category={category.name}>{capitalize(category.name)}</Link>
+              {category.name === 'udacity' ? null :   
+                <i class="fas fa-angle-right teste32"></i> }
+                </a> 
+                  
+
+              ))}
+          </nav>
+      </div>
+
     )
   }
 }

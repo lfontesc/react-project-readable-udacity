@@ -10,6 +10,8 @@ import {
  } from '../actions'
 import Moment from 'moment'
 import sortBy from 'sort-by'
+import { capitalize } from '../utils/utils'
+
 
 class PostList extends Component {
   state = {
@@ -62,54 +64,58 @@ class PostList extends Component {
     posts.sort(sortBy(`-${this.state.order}`))
 
     return (
-      <section className="posts-table-wrapper">
-        <div className="h3-wrapper">
-          <h3>All Posts</h3>
-          
-          <div className="ordenar-por">
-            <label>Order by:</label>
-            <select onChange={this.handleSelectOrder}>
-              <option value="voteScore">votes</option>
-              <option value="timestamp">Date</option>
-            </select>
-          </div>
-          <button><Link to="/posts/new">New Post</Link></button>
-        </div>
-        <table className="posts-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Author</th>
-              <th>Date</th>
-              <th>Comments</th>
-              <th>Votes</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {posts !== undefined && posts.map((post) => (
-              <tr key={post.id}>
-                <td>{post.title}</td>
-                <td>{post.category}</td>
-                <td>{post.author}</td>
-                <td>{Moment.unix(post.timestamp/1000).format('DD/MM/YYYY')}</td>
-                <td>{post.commentCount}</td>
-                <td>
-                  <span style={{ 'marginRight':'5px' }}>{post.voteScore}</span>
-                  <button style={{ 'marginRight':'5px' }} onClick={() => this.handleVote(post.id, 'upVote')}>+1</button>
-                  <button onClick={() => this.handleVote(post.id, 'downVote')}>-1</button>
-                </td>
-                <td>
-                  <button style={{ 'marginRight':'5px' }}><Link to={`/${post.category}/${post.id}`}>More Info</Link></button>
-                  <button style={{ 'marginRight':'5px' }}><Link to={`/posts/${post.id}/edit`}>Edit</Link></button>
-                  <button onClick={() => this.handleRemovePost(post.id)}>Remove</button>
-                </td>
-              </tr>
+
+        <div class="row rowespace">
+          <div class="col-sm">
+            <div class="dropdown dropsorted">
+              <span class="sortedby">Sorted By </span> 
+                <select onChange={this.handleSelectOrder}>
+                      <option value="voteScore">votes</option>
+                      <option value="timestamp">Date</option>
+                </select>
+            </div>
+
+          {posts !== undefined && posts.map((post) => ( 
+
+              <div class="card cardespace">
+                  <div class="card-header">
+                    <a>
+                      <Link to={`/${post.category}/${post.id}`}> {post.title}</Link>
+                    </a>
+                  </div>
+                  
+              <div class="card-body">
+                    <h5 class="card-title text-muted"> 
+                    <i class="fas fa-user-circle"></i> <span> {post.author}</span> 
+                    <i class="far fa-clock"></i>{Moment.unix(post.timestamp/1000).format('DD/MM/YYYY')}</h5>
+                    <p class="card-text">{post.body}</p>
+                </div>
+              <div class="card-footer text-muted">
+              <a><Link to={`/posts/${post.id}/edit`}>  
+                <i class="far fa-edit likes"></i>
+                <span class="roxo"> Edit</span>
+                </Link>
+              </a>
+              <a onClick={() => this.handleRemovePost(post.id)}>
+                <i class="far fa-trash-alt likes"></i>
+                <span class="roxo"> Delete</span>
+              </a>
+                <span class="espacos">
+                <i class="far fa-comment-dots likes"></i> <span class="roxo">{post.commentCount}</span>
+                </span>
+                <span class="espacos">
+                <button type="button" onClick={() => this.handleVote(post.id, 'upVote')} class="btn far fa-thumbs-up likes2"></button>
+                <span class="badge badge-secondary score">Score: {post.voteScore}</span> 
+                <button type="button" onClick={() => this.handleVote(post.id, 'downVote')} class="btn far fa-thumbs-down likes2"></button>
+                </span>
+                <span class="badge badge-roxo">{capitalize(post.category)}</span>
+                </div>
+                
+              </div>
             ))}
-          </tbody>
-        </table>
-      </section>
+       
+    </div>
+    </div>
     )
   }
 }
