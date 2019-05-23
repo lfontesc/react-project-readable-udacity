@@ -70,7 +70,7 @@ class PostList extends Component {
           <div class="col-sm">
             <div class="dropdown dropsorted">
               <span class="sortedby">Sorted By </span> 
-                <select onChange={this.handleSelectOrder}>
+                <select className="form-control col-md-10" onChange={this.handleSelectOrder}>
                       <option value="voteScore">votes</option>
                       <option value="timestamp">Date</option>
                 </select>
