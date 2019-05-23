@@ -156,3 +156,10 @@ text-shadow: 2px 2px #000000;
 .footer-bg{
     background-color: #6014d2;
 }
+
+.sempost{
+    color: #6014d2;
+    font-weight: bold;
+    font-size: 40px;
+    margin-top: 6%;
+}

@@ -11,6 +11,7 @@ import {
 import Moment from 'moment'
 import sortBy from 'sort-by'
 import { capitalize } from '../utils/utils'
+import style from '../assets/style/style.css'
 
 
 class PostList extends Component {
@@ -75,6 +76,9 @@ class PostList extends Component {
                 </select>
             </div>
 
+          {posts == 0
+            ? <center><div className="sempost">Nenhum Post encontrado</div></center> : console.log("tem posts")
+          }
           {posts !== undefined && posts.map((post) => ( 
 
               <div class="card cardespace">
