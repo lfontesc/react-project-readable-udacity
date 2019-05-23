@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import {  callLoadingCategories, callNewPost } from '../actions'
 import { connect } from 'react-redux'
 import { capitalize } from '../utils/utils'
+import style from '../assets/style/style.css'
+
 
 class NewPost extends Component {
   componentDidMount() {
@@ -31,15 +33,15 @@ class NewPost extends Component {
 
     return (
       <main>
-        <div className="voltar-btn-wrapper">
-          <a><Link to="/">Voltar</Link></a>
+        <div class="setanewpost">
+          <a class="color"><Link to="/"><i class="fas fa-arrow-left color"></i></Link></a>
         </div>
         
-        <section className="main-content">
-          <h3 className="post-form-title roxo">New Post</h3>
+        <section id="box-newpost"className="main-content">
+          <h3 className="post-form-title title-card">New Post</h3>
 
             <form onSubmit={this.handleNewPost}>
-              <div class="form-group col-md-4">
+              <div class="form-group">
                 <label for="exampleInputEmail1" className="roxo">Title</label>
                 <input 
                 type="text" 
@@ -50,7 +52,7 @@ class NewPost extends Component {
                 name="title" />
               </div>
 
-              <div class="form-group col-md-4">
+              <div class="form-group">
                 <label for="exampleInputPassword1" className="roxo">Author</label>
                 <input 
                 type="text" 
@@ -60,7 +62,7 @@ class NewPost extends Component {
                 name="author" />
               </div>
              
-              <div class="form-group col-md-4">
+              <div class="form-group">
               <label for="inputState " className="roxo">Category</label>
               <select id="inputState" name="category" class="form-control">
                 <option selected>Choose...</option>
@@ -70,7 +72,7 @@ class NewPost extends Component {
               </select>
             </div>
                   
-            <div class="form-group col-md-6">
+            <div class="form-group">
     <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
     <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>

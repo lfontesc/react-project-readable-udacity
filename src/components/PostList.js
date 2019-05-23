@@ -67,7 +67,8 @@ class PostList extends Component {
     return (
 
         <div class="row rowespace">
-          <div class="col-sm">
+        <div class="col-md-1"></div>
+          <div class="col-md-10">
             <div class="dropdown dropsorted">
               <span class="sortedby">Sorted By </span> 
                 <select className="form-control col-md-10" onChange={this.handleSelectOrder}>
