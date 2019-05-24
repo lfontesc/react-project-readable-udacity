@@ -32,43 +32,56 @@ class Post extends Component {
   }
 
   render() {
-    const { post } = this.props
+    //const { post } = this.props
     let comments = this.props.comments.comments
-    console.log(post.error)
-    if(post.error){
-      return <Redirect to='/404/notfound' />
-    }
+    let post = this.props.post.post
+
+    //if(post.error){
+    //  return <Redirect to='/404/notfound' />
+    //}
     return (
       <main>
-        <div className="voltar-btn-wrapper">
-          <button><Link to="/">Back</Link></button>
-        </div>
+           <div class="setanewpost2">
+              <a class="color"><Link to="/"><i class="fas fa-arrow-left color"></i></Link></a>
+           </div>
         <section className="post-wrapper">
           <div className="post-header">
             <div>
-              <h3>{post.title}</h3>
-              <span className="small">
-                Por {post.author} em {Moment.unix(post.timestamp/1000).format('DD/MM/YYYY')}
-              </span>
-              <Link className="categoria-item" to="#">
-                {post.category !== undefined && capitalize(post.category)}
-              </Link>
+              <h3>{post.title}<span class="badge badge-secondary">  <Link className="categoria-item" to="#">
+                 {post.category !== undefined && capitalize(post.category)}
+              </Link></span></h3>
+
+             <span>
+                <i class="fas fa-user-circle"></i> <span> {post.author}</span> 
+                <i class="far fa-clock"></i>{Moment.unix(post.timestamp/1000).format('DD/MM/YYYY')}
+             </span>
+           
             </div>
             <div className="votes-wrapper">
-              <span>{comments.length} comments | </span>
-              <span>{post.voteScore} votos</span>
-              <button style={{'marginRight':'5px'}} onClick={() => this.handleVotar(post.id, 'upVote')}>+1</button>
-              <button onClick={() => this.handleVotar(post.id, 'downVote')}>-1</button>
-            </div>
+            <span>
+                <i class="far fa-comment-dots likes"></i> <span class="roxo">{post.commentCount}</span>
+             </span>
+             <span class="espacos">
+                <button type="button" onClick={() => this.handleVote(post.id, 'upVote')} class="btn far fa-thumbs-up likes2"></button>
+                <span class="badge badge-secondary score">Score: {post.voteScore}</span> 
+                <button type="button" onClick={() => this.handleVote(post.id, 'downVote')} class="btn far fa-thumbs-down likes2"></button>
+             </span>             
+           </div>
           </div>
           <hr/>
           <div className="post-body">
             {post.body}
           </div>
           <div>
-            <button style={{ 'marginRight':'5px' }}><Link to={`/posts/${post.id}/edit`}>Edit</Link></button>
-            <button onClick={() => this.handleRemovePost(post.id)}>Remove</button>
-          </div>
+               <a><Link to={`/posts/${post.id}/edit`}>  
+                <i class="far fa-edit likes"></i>
+                <span class="roxo"> Edit</span>
+                </Link>
+              </a>
+              <a onClick={() => this.handleRemovePost(post.id)}>
+                <i class="far fa-trash-alt likes"></i>
+                <span class="roxo"> Delete</span>
+              </a>          </div>
           <hr/>
         </section>
         <Comments id={this.props.match.params.id}/>

@@ -58,29 +58,37 @@ class EditComment extends Component {
   render() {
     return (
       <main>
-        <div className="voltar-btn-wrapper">
-          <button><Link to="/post/${}">Voltar</Link></button>
-        </div>
-        <section className="main-content">
-          <h3 className="post-form-title">Edit Comment</h3>
+           <div class="setanewpost">
+              <a class="color"><Link to="/"><i class="fas fa-arrow-left color"></i></Link></a>
+           </div>
+
+
+
+        <section id="box-newpost" className="main-content">
+          <h3 className="post-form-title roxo">Edit Comment</h3> <hr></hr>
           <form className="post-form" onSubmit={this.handleEditComment}>
-            <div className="form-group">
-              <label>Author:</label>
-              <input
-                name="author"
-                type="text"
+
+          <div class="form-group col-md-12">
+                <label for="exampleInputEmail1" className="roxo">Author</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
                 placeholder="Author"
-                required
+                name="author" 
                 value={this.state.author}
                 onChange={(e) => this.handleInput(e)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Body:</label>
-              <textarea name="body" value={this.state.body} onChange={(e) => this.handleInput(e)}/>
-            </div>
-            <div className="form-group">
-              <button>Edit</button>
+                />
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
+            <textarea name="body" class="form-control" id="exampleFormControlTextarea1" value={this.state.body} onChange={(e) => this.handleInput(e)} rows="3"></textarea>
+          </div>
+
+            <div className="form-group col-md-6">
+              <button class="btn btn-roxo">Submit</button>
             </div>
           </form>
         </section>

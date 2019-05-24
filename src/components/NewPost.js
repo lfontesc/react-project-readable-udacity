@@ -73,9 +73,10 @@ class NewPost extends Component {
             </div>
                   
             <div class="form-group">
-    <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
-    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
+              <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
+              <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            
         <button type="submit" class="btn btn-roxo">Submit</button>
             </form>
         </section>

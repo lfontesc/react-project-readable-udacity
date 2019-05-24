@@ -58,19 +58,31 @@ class Comments extends Component {
         <ul>
           {comments !== undefined && comments.map((comment) => (
             <li key={comment.id} className="comment">
-              <div><b>{comment.author} em {Moment.unix(comment.timestamp/1000).format('DD/MM/YYYY')}:</b></div>
+              <div>
+              <span>
+                <i class="fas fa-user-circle"></i> <span> {comment.author}</span> 
+                <i class="far fa-clock"></i>{Moment.unix(comment.timestamp/1000).format('DD/MM/YYYY')}
+             </span>              </div>
               <div className="comentario-body">
                 {comment.body}
               </div>
               <div className="comentario-footer">
                 <div>
-                  <button style={{'marginRight':'5px'}}><Link to={`/comments/${comment.id}/edit`}>Edit</Link></button>
-                  <button onClick={() => this.handleRemoveComment(comment.id)}>Remove</button>
-                </div>
+
+                <a><Link to={`/comments/${comment.id}/edit`}>  
+                <i class="far fa-edit likes"></i>
+                <span class="roxo"> Edit</span>
+                </Link>
+              </a>
+              <a onClick={() => this.handleRemoveComment(comment.id)}>
+                <i class="far fa-trash-alt likes"></i>
+                <span class="roxo"> Delete</span>
+              </a>          
+             </div>
                 <div className="votes-wrapper">
-                  <span>{comment.voteScore} votes</span>
-                  <button style={{'marginRight':'5px'}} onClick={() => this.handleVote(comment.id, 'upVote')}>+1</button>
-                  <button onClick={() => this.handleVote(comment.id, 'downVote')}>-1</button>
+                  <button type="button" onClick={() => this.handleVote(comment.id, 'upVote')} class="btn far fa-thumbs-up likes2"></button>
+                  <span class="badge badge-secondary score">Score: {comment.voteScore}</span> 
+                  <button type="button" onClick={() => this.handleVote(comment.id, 'downVote')} class="btn far fa-thumbs-down likes2"></button>
                 </div>
               </div>
               <hr/>
@@ -78,13 +90,26 @@ class Comments extends Component {
           ))}
         </ul>
         <hr/>
-        <form className="comentario-form" onSubmit={this.handleNewComment}>
-          <div style={{'marginBottom':'10px'}}><b>Submit Comment</b></div>
-          <input name="author" type="text" placeholder="Autor" style={{'marginBottom':'10px'}} required/>
-          <br/>
-          <textarea name="body" placeholder="Corpo do comentário" required/>
-          <br/>
-          <button>Comentar</button>
+        <form id="box-newpost" class="comment-form" onSubmit={this.handleNewComment}>
+          <div class="roxo"><b>Submit New Comment</b></div>
+          <hr></hr>
+          <div class="form-group col-md-12">
+                <label for="exampleInputEmail1" className="roxo">Author</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
+                placeholder="Author"
+                name="author" />
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
+            <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+            <hr></hr>
+          <button class="btn btn-roxo">Submit</button>
         </form>
       </section>
     )

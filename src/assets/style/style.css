@@ -63,8 +63,17 @@ text-shadow: 2px 2px #000000;
     margin-top: 5%;
     margin-right: 8%;
     margin-left: 8%;
+    margin-bottom: 4%;
+
 }
 
+.testecor{
+    border-style: solid;
+    border-width: 2px;
+    border-color:  #8c8c8c;
+    border-radius: 5px;
+    box-shadow: 5px 7px #8c8c8c;
+}
 .cardespace {
     margin-right: 1%;
     margin-bottom: 2%;
@@ -168,6 +177,11 @@ text-shadow: 2px 2px #000000;
     font-weight: bold;
     font-size: 40px;
     margin-top: 6%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    box-shadow: 5px 7px #8c8c8c;
+    
 }
 
 
@@ -182,7 +196,6 @@ text-shadow: 2px 2px #000000;
     margin-left: 30%;
     margin-right: 30%;
     margin-bottom: 10%;
-
 }
 
 .title-card{
@@ -194,4 +207,9 @@ text-shadow: 2px 2px #000000;
 
 .setanewpost{
     margin-left: 20%;
+}
+
+.comment-form{
+    width: 40%;
+    margin-bottom: 2%;
 }

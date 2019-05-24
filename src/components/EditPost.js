@@ -65,51 +65,58 @@ class EditPost extends Component {
 
     return (
       <main>
-        <div className="voltar-btn-wrapper">
-          <button><Link to="/">Voltar</Link></button>
-        </div>
-        <section className="main-content">
-          <h3 className="post-form-title">Editar Postagem</h3>
-          <form className="post-form" onSubmit={this.handleEditPost}>
-            <div className="form-group">
-              <label>Título:</label>
-              <input
+       <div class="setanewpost">
+          <a class="color"><Link to="/"><i class="fas fa-arrow-left color"></i></Link></a>
+       </div>
+
+       <section id="box-newpost"className="main-content">
+          <h3 className="post-form-title title-card">Edit Post</h3>
+
+            <form onSubmit={this.handleEditPost}>
+              <div class="form-group">
+                <label for="exampleInputEmail1" className="roxo">Title</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
+                placeholder="Title"
                 name="title"
-                type="text"
-                placeholder="Título"
-                required
                 value={this.state.title}
                 onChange={(e) => this.handleInput(e)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Autor:</label>
-              <input
-                name="author"
-                type="text"
-                placeholder="Autor"
-                required
+                 />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword1" className="roxo">Author</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="exampleInputPassword1" 
+                placeholder="Author"
+                name="author" 
                 value={this.state.author}
                 onChange={(e) => this.handleInput(e)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Categoria:</label>
-              <select name="category" value={this.state.category} onChange={(e) => this.handleInput(e)}>
-                <option value="">Selecione</option>
+                />
+              </div>
+             
+              <div class="form-group">
+              <label for="inputState " className="roxo">Category</label>
+              <select id="inputState" name="category" value={this.state.category} onChange={(e) => this.handleInput(e)} class="form-control">
+                <option selected>Choose...</option>
                 {categories !== undefined && categories.map((category) => (
                   <option key={category.name} value={category.name}>{capitalize(category.name)}</option>
                 ))}
               </select>
             </div>
-            <div className="form-group">
-              <label>Corpo:</label>
-              <textarea name="body" value={this.state.body} onChange={(e) => this.handleInput(e)}/>
+                  
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
+              <textarea name="body"  value={this.state.body} onChange={(e) => this.handleInput(e)} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <div className="form-group">
-              <button>Edit</button>
-            </div>
-          </form>
+            
+        <button type="submit" class="btn btn-roxo">Submit</button>
+            </form>
         </section>
       </main>
     )
