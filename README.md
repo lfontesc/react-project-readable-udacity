@@ -31,13 +31,11 @@ O projeto Readable é um projeto solicitado no segundo modulo do nanodegree de d
   <img src="principal.jpg" width="700" />
 </p>  
 
+## Referências
+
  Você pode ler mais sobre o create react app em <br>[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
+ 
 Documentação do React <br> [React documentation](https://reactjs.org/).
-
-Referência
-
 https://github.com/udacity/reactnd-project-readable-starter <br>
-https://redux.js.org/ <br>
 https://medium.com/reactbrasil/iniciando-com-redux-c14ca7b7dcf <br>
 Slack de React da Udacity
