@@ -118,6 +118,25 @@ text-shadow: 2px 2px #000000;
     margin-left: 1%;
 }
 
+.likes3 {
+    color: #004d4d;
+    font-size: 16px;
+    margin-left: 1%; 
+}
+
+.likes4 {
+    color: #004d4d;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.likes5 {
+    color: #004d4d;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 1%;
+}
 .roxo{
     color: #004d4d;
     font-weight: bold;
@@ -212,4 +231,26 @@ text-shadow: 2px 2px #000000;
 .comment-form{
     width: 40%;
     margin-bottom: 2%;
+}
+
+.post-wrapper{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    box-shadow: 5px 7px #8c8c8c;
+}
+
+.tag {
+    float: right;
+}
+
+.comments{
+    margin-top: 1%;
+}
+
+.textcomment{
+    text-align: center;
+    color: #004d4d;
+    font-size: 30px;
+    font-weight: bold;
 }

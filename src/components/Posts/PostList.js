@@ -7,11 +7,11 @@ import {
     callRemovePost,
     selectOrder,
     callVote
- } from '../actions'
+ } from '../../actions'
 import Moment from 'moment'
 import sortBy from 'sort-by'
-import { capitalize } from '../utils/utils'
-import style from '../assets/style/style.css'
+import { capitalize } from '../../utils/utils'
+import style from '../../assets/style/style.css'
 
 
 class PostList extends Component {
@@ -77,12 +77,12 @@ class PostList extends Component {
                 </select>
             </div>
 
+          
           {posts == 0
             ? <center><div className="sempost">Nenhum Post encontrado</div></center> : console.log("tem posts")
           }
-          {posts !== undefined && posts.map((post) => ( 
-
-              <div class="card cardespace">
+          {posts !== undefined && posts.map((post) => (
+                    <div class="card cardespace">
                   <div class="card-header">
                     <a>
                       <Link to={`/${post.category}/${post.id}`}> {post.title}</Link>

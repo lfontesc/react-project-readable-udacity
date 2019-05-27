@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { callLoadingComments, callNewComment, callRemoveComment, callVote } from '../actions'
+import { callLoadingComments, callNewComment, callRemoveComment, callVote } from '../../actions'
 import { connect } from 'react-redux'
 import Moment from 'moment'
 import sortBy from 'sort-by'
@@ -54,35 +54,37 @@ class Comments extends Component {
     comments.sort(sortBy(`-${this.state.order}`))
 
     return (
-      <section className="comentarios-wrapper">
-        <ul>
+      
+     <div class="comments" >
+     <span class="textcomment"><h3 class="textcomment">Comments</h3></span> <hr></hr>
+        <ul class="list-group list-group-flush">
           {comments !== undefined && comments.map((comment) => (
-            <li key={comment.id} className="comment">
+            <li key={comment.id} class="list-group-item">
               <div>
               <span>
                 <i class="fas fa-user-circle"></i> <span> {comment.author}</span> 
                 <i class="far fa-clock"></i>{Moment.unix(comment.timestamp/1000).format('DD/MM/YYYY')}
              </span>              </div>
-              <div className="comentario-body">
+              <div>
                 {comment.body}
               </div>
-              <div className="comentario-footer">
+              <div>
                 <div>
 
                 <a><Link to={`/comments/${comment.id}/edit`}>  
-                <i class="far fa-edit likes"></i>
+                <i class="far fa-edit likes4"></i>
                 <span class="roxo"> Edit</span>
                 </Link>
               </a>
               <a onClick={() => this.handleRemoveComment(comment.id)}>
-                <i class="far fa-trash-alt likes"></i>
+                <i class="far fa-trash-alt likes5"></i>
                 <span class="roxo"> Delete</span>
               </a>          
              </div>
                 <div className="votes-wrapper">
-                  <button type="button" onClick={() => this.handleVote(comment.id, 'upVote')} class="btn far fa-thumbs-up likes2"></button>
+                  <button type="button" onClick={() => this.handleVote(comment.id, 'upVote')} class="btn far fa-thumbs-up likes3"></button>
                   <span class="badge badge-secondary score">Score: {comment.voteScore}</span> 
-                  <button type="button" onClick={() => this.handleVote(comment.id, 'downVote')} class="btn far fa-thumbs-down likes2"></button>
+                  <button type="button" onClick={() => this.handleVote(comment.id, 'downVote')} class="btn far fa-thumbs-down likes3"></button>
                 </div>
               </div>
               <hr/>
@@ -111,7 +113,7 @@ class Comments extends Component {
             <hr></hr>
           <button class="btn btn-roxo">Submit</button>
         </form>
-      </section>
+      </div>
     )
   }
 }

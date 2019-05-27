@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { callEditComment, callLoadingComment } from '../actions'
+import { callEditComment, callLoadingComment } from '../../actions'
 import { connect } from 'react-redux'
 
 class EditComment extends Component {

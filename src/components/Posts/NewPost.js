@@ -1,47 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { callLoadingCategories, callEditPost, callLoadingPost } from '../actions'
+import {  callLoadingCategories, callNewPost } from '../../actions'
 import { connect } from 'react-redux'
-import { capitalize } from '../utils/utils'
+import { capitalize } from '../../utils/utils'
+import style from '../../assets/style/style.css'
 
-class EditPost extends Component {
-  state = {
-    title: '',
-    author: '',
-    category: '',
-    body: ''
-  }
 
+class NewPost extends Component {
   componentDidMount() {
     this.props.callLoadingCategories()
-    this.props.callLoadingPost(this.props.match.params.id)
-
-    let post = this.props.post.post
-
-    this.setState({
-      title: post.title,
-      author: post.author,
-      category: post.category,
-      body: post.body
-    })
   }
 
-  componentWillReceiveProps(nextProps) {
-    let post = nextProps.post.post
-
-    this.setState({
-      title: post.title,
-      author: post.author,
-      category: post.category,
-      body: post.body
-    })
-  }
-
-  handleEditPost = (e) => {
+  handleNewPost = (e) => {
     e.preventDefault()
 
     let post = {
-      id: this.props.match.params.id,
+      id: Date.now(),
       timestamp: Date.now(),
       author: e.target.author.value,
       body: e.target.body.value,
@@ -49,15 +23,9 @@ class EditPost extends Component {
       category: e.target.category.value
     }
 
-    this.props.callEditPost(post)
+    this.props.callNewPost(post)
 
     window.location = '/'
-  }
-
-  handleInput = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
   }
 
   render() {
@@ -65,14 +33,14 @@ class EditPost extends Component {
 
     return (
       <main>
-       <div class="setanewpost">
+        <div class="setanewpost">
           <a class="color"><Link to="/"><i class="fas fa-arrow-left color"></i></Link></a>
-       </div>
+        </div>
+        
+        <section id="box-newpost"className="main-content">
+          <h3 className="post-form-title title-card">New Post</h3>
 
-       <section id="box-newpost"className="main-content">
-          <h3 className="post-form-title title-card">Edit Post</h3>
-
-            <form onSubmit={this.handleEditPost}>
+            <form onSubmit={this.handleNewPost}>
               <div class="form-group">
                 <label for="exampleInputEmail1" className="roxo">Title</label>
                 <input 
@@ -81,10 +49,7 @@ class EditPost extends Component {
                 id="exampleInputEmail1" 
                 aria-describedby="emailHelp" 
                 placeholder="Title"
-                name="title"
-                value={this.state.title}
-                onChange={(e) => this.handleInput(e)}
-                 />
+                name="title" />
               </div>
 
               <div class="form-group">
@@ -94,15 +59,12 @@ class EditPost extends Component {
                 class="form-control" 
                 id="exampleInputPassword1" 
                 placeholder="Author"
-                name="author" 
-                value={this.state.author}
-                onChange={(e) => this.handleInput(e)}
-                />
+                name="author" />
               </div>
              
               <div class="form-group">
               <label for="inputState " className="roxo">Category</label>
-              <select id="inputState" name="category" value={this.state.category} onChange={(e) => this.handleInput(e)} class="form-control">
+              <select id="inputState" name="category" class="form-control">
                 <option selected>Choose...</option>
                 {categories !== undefined && categories.map((category) => (
                   <option key={category.name} value={category.name}>{capitalize(category.name)}</option>
@@ -112,7 +74,7 @@ class EditPost extends Component {
                   
             <div class="form-group">
               <label for="exampleFormControlTextarea1" className="roxo">Body: </label>
-              <textarea name="body"  value={this.state.body} onChange={(e) => this.handleInput(e)} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             
         <button type="submit" class="btn btn-roxo">Submit</button>
@@ -123,9 +85,8 @@ class EditPost extends Component {
   }
 }
 
-const mapStateToProps = ({ categories, post }) => ({
-  categories,
-  post
+const mapStateToProps = ({ categories }) => ({
+  categories
 })
 
-export default connect(mapStateToProps, { callLoadingCategories, callEditPost, callLoadingPost })(EditPost)
+export default connect(mapStateToProps, { callLoadingCategories, callNewPost })(NewPost)

@@ -44,7 +44,7 @@ const defaultData = {
     author: 'thingone',
     category: 'react',
     voteScore: -5,
-    deleted: false,
+    deleted: true,
     commentCount: 0
   }
 }

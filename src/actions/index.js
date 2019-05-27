@@ -89,19 +89,12 @@ export const NOT_FOUND = 'NOT_FOUND'
   export function callLoadingPost(id) {
     return (dispatch) => {
       API.getPost(id).then(
-        post =>{
-          if(!post.id) {
-            dispatch({type: NOT_FOUND})
-          }else{
-            dispatch({
-              type: LOADING_POST,
-              post
-            })
-          }
-        }
+        (response) => dispatch(loadingPost(response))
       )
     }
   }
+
+  
 
   export function removePost(id) {
     return {

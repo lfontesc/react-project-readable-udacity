@@ -2,7 +2,7 @@ Este projeto foi criado com o [Create React App](https://github.com/facebook/cre
 
 ## Importante !
 
-Você precisará executar o servidor, que está disponível na pasta server do projeto.
+Você precisará executar o servidor, que está disponível na pasta "api-server" do projeto.
 
 ## Manual de Instalação
 
@@ -28,7 +28,7 @@ O projeto Readable é um projeto solicitado no segundo modulo do nanodegree de d
 
 <p align="center"><b>Projeto Readable </b></p>
 <p align="center">
-  <img src="principal2.jpg" width="700" />
+  <img src="principal.jpg" width="700" />
 </p>  
 
  Você pode ler mais sobre o create react app em <br>[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

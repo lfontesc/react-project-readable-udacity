@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom'
 
 //Components
-import CategoryList from './CategoryList'
-import PostList from './PostList'
-import NewPost from './NewPost'
-import EditPost from './EditPost'
-import Post from './Post'
-import EditComment from './EditComment'
-import NotFound from './NotFound'
-import Header from './Header'
-import Footer from './Footer'
+import CategoryList from '../CategoryList'
+import PostList from '../Posts/PostList'
+import NewPost from '../Posts/NewPost'
+import EditPost from '../Posts/EditPost'
+import Post from '../Posts/Post'
+import EditComment from '../Comments/EditComment'
+import NotFound from '../Global/NotFound'
+
 
 function Routes() {
   return (
