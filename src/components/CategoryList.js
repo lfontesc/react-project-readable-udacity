@@ -18,7 +18,8 @@ class CategoryList extends Component {
 
     this.props.selectCategory(category)
 
-    window.location = '/' + category
+    
+   // window.location = '/' + category
   }
 
   render() {
@@ -29,15 +30,20 @@ class CategoryList extends Component {
 
       <div className='container space'>
           <nav class="nav nav-pills flex-column flex-sm-row">
-          <a class="flex-sm-fill text-sm-center nav-link separator" href="#"><Link to="/">Todas</Link>
+          <Link class="flex-sm-fill text-sm-center nav-link separator" to="/">Todas
           <i class="fas fa-angle-right teste32"></i>
-          </a>
+          </Link>
             {categories !== undefined && categories.map((category) => (
-                <a class="flex-sm-fill text-sm-center nav-link separator" href="#">
-              <Link to="#" onClick={this.handleSelectCategory} category={category.name}>{capitalize(category.name)}</Link>
+              <Link 
+              to={`/${category.name}`} 
+              category={category.name}
+              class="flex-sm-fill text-sm-center nav-link separator"
+              > {capitalize(category.name)}
+              
+             
               {category.name === 'udacity' ? null :   
                 <i class="fas fa-angle-right teste32"></i> }
-                </a> 
+              </Link>   
                   
 
               ))}

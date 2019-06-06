@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { capitalize } from '../../utils/utils'
 import Moment from 'moment'
 import Comments from '../Comments/Comments'
+import NotFound from '../Global/NotFound'
 
 class Post extends Component {
   componentDidMount() {
@@ -35,7 +36,9 @@ class Post extends Component {
     //const { post } = this.props
     let comments = this.props.comments.comments
     let post = this.props.post.post
- 
+    if(post.error){
+      return <NotFound />
+    }
     return (
       <main>
            <div class="setanewpost2">

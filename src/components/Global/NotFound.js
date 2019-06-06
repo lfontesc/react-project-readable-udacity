@@ -8,7 +8,7 @@ class NotFound extends Component {
       <main>
         <header />
        <div> <center><div className="sempost">Post Removido ou não Encontrado</div></center>
-            <Link to="/">Retornar para a página inicial</Link>
+       <Link to="/"><i class="fas fa-arrow-left color">Retornar para Pagina Inicial</i></Link>
         </div>
       </main>
     )

@@ -6,6 +6,7 @@ export const SELECT_CATEGORY = 'SELECT_CATEGORY'
 export const LOADING_POSTS = 'LOADING_POSTS'
 export const LOADING_POST_BY_CATEGORY = 'LOADING_POST_B?Y_CATEGORY'
 export const LOADING_POST = 'LOADING_POST'
+export const ADD_POST = 'ADD_POST'
 export const SELECT_ORDER = 'SELECT_ORDER'
 export const REMOVE_POST = 'REMOVE_POST'
 export const VOTE_POST = 'VOTE_POST'
@@ -14,6 +15,8 @@ export const VOTE_COMMENT = 'VOTE_COMMENT'
 export const EDIT_POST = 'EDIT_POST'
 export const LOADING_COMMENTS = 'LOADING_COMMENTS'
 export const LOADING_COMMENT = 'LOADING_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const ADD_COMMENT = 'ADD_COMMENT'
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const NOT_FOUND = 'NOT_FOUND'
 
@@ -148,7 +151,7 @@ export const NOT_FOUND = 'NOT_FOUND'
   export function callEditPost(post) {
     return (dispatch) => {
       API.editPost(post).then(
-        (response) => dispatch(post(response))
+        (response) => dispatch(loadingPost(response))
       )
     }
   }

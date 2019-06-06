@@ -51,7 +51,7 @@ class EditPost extends Component {
 
     this.props.callEditPost(post)
 
-    window.location = '/'
+    this.props.history.push("/")
   }
 
   handleInput = (e) => {

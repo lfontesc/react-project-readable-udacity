@@ -31,7 +31,13 @@ class PostList extends Component {
 
   componentWillReceiveProps(nextProps) {
     let order = nextProps.order.order
+    let category = this.props.match.params.category
 
+    if(category === undefined) {
+      this.props.callLoadingPosts()
+    } else {
+      this.props.callLoadingPostsByCategory(category)
+    }
     this.setState({
       order: order
     })
@@ -82,11 +88,11 @@ class PostList extends Component {
             ? <center><div className="sempost">Nenhum Post encontrado</div></center> : console.log("tem posts")
           }
           {posts !== undefined && posts.map((post) => (
-                    <div class="card cardespace">
+                    <div key={post.id} class="card cardespace">
                   <div class="card-header">
-                    <a>
+                    
                       <Link to={`/${post.category}/${post.id}`}> {post.title}</Link>
-                    </a>
+                  
                   </div>
                   
               <div class="card-body">
@@ -96,11 +102,11 @@ class PostList extends Component {
                     <p class="card-text">{post.body}</p>
                 </div>
               <div class="card-footer text-muted">
-              <a><Link to={`/posts/${post.id}/edit`}>  
+              <Link to={`/posts/${post.id}/edit`}>  
                 <i class="far fa-edit likes"></i>
                 <span class="roxo"> Edit</span>
                 </Link>
-              </a>
+              
               <a onClick={() => this.handleRemovePost(post.id)}>
                 <i class="far fa-trash-alt likes"></i>
                 <span class="roxo"> Delete</span>

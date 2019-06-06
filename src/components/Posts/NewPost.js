@@ -25,7 +25,7 @@ class NewPost extends Component {
 
     this.props.callNewPost(post)
 
-    window.location = '/'
+    this.props.history.push("/")
   }
 
   render() {

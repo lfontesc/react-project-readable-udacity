@@ -26,8 +26,9 @@ class Comments extends Component {
     }
 
     this.props.callNewComment(comment)
+    this.props.callLoadingComments(this.props.id)
 
-    window.location = '/posts/' + this.props.id
+  //  window.location = '/posts/' + this.props.id
   }
 
   handleRemoveComment = (id) => {
@@ -37,7 +38,9 @@ class Comments extends Component {
       this.props.callRemoveComment(id)
     }
 
-    window.location = '/posts/' + this.props.id
+    this.props.callLoadingComments(this.props.id)
+
+    //  window.location = '/posts/' + this.props.id
   }
 
   handleVote = (id, option) => {
