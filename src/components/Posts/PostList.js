@@ -85,7 +85,7 @@ class PostList extends Component {
 
           
           {posts == 0
-            ? <center><div className="sempost">Nenhum Post encontrado</div></center> : console.log("tem posts")
+            ? <center><div className="sempost">Nenhum Post encontrado</div></center> : <b></b> 
           }
           {posts !== undefined && posts.map((post) => (
                     <div key={post.id} class="card cardespace">

@@ -20,7 +20,7 @@ class Post extends Component {
     if(confirm === true) {
       this.props.callRemovePost(id)
 
-      window.location = '/'
+      this.props.history.push("/")
     }
   }
 
@@ -36,9 +36,10 @@ class Post extends Component {
     //const { post } = this.props
     let comments = this.props.comments.comments
     let post = this.props.post.post
-    if(post.error){
+    if(post.error | post.id === undefined){
       return <NotFound />
     }
+
     return (
       <main>
            <div class="setanewpost2">
